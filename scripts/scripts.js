@@ -1,30 +1,48 @@
 var tbody = document.querySelector('table tbody');
 
 function Cadastrar() {
+
+	var obj;
 	var _texto = document.querySelector('#texto').value;
-	var _proxEtapaId = document.querySelector('#proxEtapaId').value;
-	var _tipo = document.querySelector('#tipo').value;
-	var _respostas = document.querySelector('#respostas').value;
+	var _tipo = $('input[name=tipo]:checked').val();
+	if(_tipo === "0"){
 
-	var etapa = {
-		texto: _texto,
-		proxEtapaId: Number(_proxEtapaId),
-		tipo: Number(_tipo),
-		respostas: [],
-	}
+		var respostaText1 = document.querySelector('#respostaText1').value;
+		var proxEtapaResposta1 = document.querySelector('#proxEtapaResposta1').value;
 
-	fazerPost(etapa)
+		var _resposta1 = {
+			legenda: respostaText1,
+			proxEtapaId: proxEtapaResposta1
+		}
+
+		var respostaText2 = document.querySelector('#respostaText2').value;
+		var proxEtapaResposta2 = document.querySelector('#proxEtapaResposta2').value;
+
+		var _resposta2 = {
+			legenda: respostaText2,
+			proxEtapaId: proxEtapaResposta2			
+		}
+	
+		obj = {
+			texto: _texto,
+			tipo: Number(_tipo),
+			respostas: [ 
+				_resposta1,
+				_resposta2],
+		}
+	}else{
+		var _proxEtapaId = document.querySelector('#proxEtapaId').value;
+		
+		obj = {
+			texto: _texto,
+			proxEtapaId: Number(_proxEtapaId),
+			tipo: Number(_tipo),
+			respostas: [],
+		}
+	}	
+	fazerPost(obj)
 	$('#myModal').modal('hide')
 }
-
-function Cancelar() {
-	var btnSalvar = document.querySelector('#btnSalvar');
-	var btnCancelar = document.querySelector('#btnCancelar');
-
-	btnSalvar.textContent = 'Cadastrar';
-	btnCancelar.textContent = 'Limpar';
-}
-
 
 function carregaEtapas(metodo, id, corpo) {
 	tbody.innerHTML = '';
@@ -43,6 +61,16 @@ function carregaEtapas(metodo, id, corpo) {
 	}
 	xhr.send();
 }
+carregaEtapas('GET');
+
+//Controle de Formulario respostas ou perguntas
+$('#r11').on('click', function(){
+  $(this).parent().find('a').trigger('click')
+})
+
+$('#r12').on('click', function(){
+  $(this).parent().find('a').trigger('click')
+})
 
 function fazerPost(corpo) {
 	var xhr = new XMLHttpRequest();
@@ -51,8 +79,6 @@ function fazerPost(corpo) {
 	xhr.send(JSON.stringify(corpo));
 }
 
-carregaEtapas('GET');
-
 function ediatar(id) {
 
 	console.log(id);
@@ -60,13 +86,25 @@ function ediatar(id) {
 
 function imprimeEtapa(etapa) {
 
-	var trow = `<tr>
+	if(etapa.tipo === 0){
+		var trow = `<tr>
 							<td>${etapa.texto}</td>
 							<td>${etapa.proxEtapaId}</td>
-							<td>${etapa.tipo}</td>
+							<td>${etapa.id}</td>							
+							<td>${etapa.respostas[0].legenda} | ${etapa.respostas[1].legenda}</td>
+							<td><button type="button" class="btn btn-warning" onclick='editarEstudante(${JSON.stringify(etapa)})'>Editar</button></td>
+					    </tr>
+					   `
+	tbody.innerHTML += trow;
+	}else{
+		var trow = `<tr>
+							<td>${etapa.texto}</td>
+							<td>${etapa.proxEtapaId}</td>
+							<td>${etapa.id}</td>							
 							<td>${etapa.respostas}</td>
 							<td><button type="button" class="btn btn-warning" onclick='editarEstudante(${JSON.stringify(etapa)})'>Editar</button></td>
 					    </tr>
 					   `
 	tbody.innerHTML += trow;
+	}
 }
