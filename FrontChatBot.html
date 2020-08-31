@@ -11,8 +11,7 @@
 </head>
 
 <body>
-	<div class="container">
-
+	<div class="container">		
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -21,7 +20,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
 								aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+						<h4 class="modal-title" id="myModalLabel">Cadastrar Etapa</h4>
 					</div>
 					<div class="modal-body">
 
@@ -54,10 +53,11 @@
 
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<h4 class=panel-title>											
+										<h4 class=panel-title>
 											<label for='r12' style='width: 350px;'>
 
-												<input type='radio' id='r12' name='tipo' value='0' required /> Com resposta
+												<input type='radio' id='r12' name='tipo' value='0' required /> Com
+												resposta
 												<a data-toggle="collapse" data-parent="#accordion"
 													href="#collapseTwo"></a>
 											</label>
@@ -70,16 +70,18 @@
 
 											<div class="form-group">
 												<label>Respostas numero um:</label>
-												<input id="respostaText1" class="form-control" type="text">												
-												<label>Informar o Id da etapa para a qual a resposta um encaminha:</label>
+												<input id="respostaText1" class="form-control" type="text">
+												<label>Informar o Id da etapa para a qual a resposta um
+													encaminha:</label>
 												<input id="proxEtapaResposta1" class="form-control" type="text">
 												<label>Respostas numero dois:</label>
-												<input id="respostaText2" class="form-control" type="text">	
-												<label>Informar o Id da etapa para a qual a resposta dois encaminha:</label>
+												<input id="respostaText2" class="form-control" type="text">
+												<label>Informar o Id da etapa para a qual a resposta dois
+													encaminha:</label>
 												<input id="proxEtapaResposta2" class="form-control" type="text">
-											</div>	
-													
-												
+											</div>
+
+
 										</div>
 
 									</div>
@@ -100,17 +102,51 @@
 			</div>
 		</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Chat</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>Id</td>
+									<td>Texto</td>
+									<td>Respostas</td>
+								</tr>
+							<tbody id='chat'>
+				
+							</tbody>
+							</thead>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="CabecalhoCadastro">
 			<h2 id="titulo"> Chat Bot</h2>
 			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#chatModal" onclick="chatOn()">						
+				Iniciar Chat
+			</button>
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 				Cadastrar Etapa
-			</button>
+			</button>			
 		</div>
 
 		<hr>
 		<table class="table table-striped">
 			<thead>
+				<tr><h2 class="text-center">Etapas Cadastradas</h2></tr>
 				<tr>
 					<td>Texto</td>
 					<td>ProxEtapaId</td>
@@ -119,10 +155,9 @@
 					<td>Opções</td>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id='tabelao'>
 			</tbody>
-		</table>
-
+		</table>			
 
 	</div>
 
