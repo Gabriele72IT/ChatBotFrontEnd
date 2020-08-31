@@ -12,6 +12,6 @@ Cadastro de frase e respostas para dialogo:
 <br/>
 <img src="prints/Cadastro.PNG">
 <br/><br/>
-Simulandor de comportamento do chat:
+Simulador de comportamento do chat:
 <br/><br/>
 <img src="prints/ChatRodando.PNG"><br/><br/>
