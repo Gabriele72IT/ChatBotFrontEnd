@@ -11,7 +11,39 @@
 </head>
 
 <body>
-	<div class="container">		
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="#">Chat Bot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<!--<li class="nav-item">
+					<a class="nav-link" href="#">Home</a>
+				</li>-->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a class="nav-link " href="login.html">Entrar</a></li>
+				<!--<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Administrador
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Perfil</a>
+						<a class="dropdown-item" href="#">Configurações</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Sair</a>
+					</div>
+				</li>-->
+			</ul>
+
+		</div>
+	</nav>
+
+	<div class="container TopPage">
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -113,7 +145,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						
+
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -122,7 +154,7 @@
 									<td>Respostas</td>
 								</tr>
 							<tbody id='chat'>
-				
+
 							</tbody>
 							</thead>
 						</table>
@@ -135,18 +167,21 @@
 		<div class="CabecalhoCadastro">
 			<h2 id="titulo"> Chat Bot</h2>
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#chatModal" onclick="chatOn()">						
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target="#chatModal"
+				onclick="chatOn()">
 				Iniciar Chat
 			</button>
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 				Cadastrar Etapa
-			</button>			
+			</button>
 		</div>
 
 		<hr>
 		<table class="table table-striped">
 			<thead>
-				<tr><h2 class="text-center">Etapas Cadastradas</h2></tr>
+				<tr>
+					<h2 class="text-center">Etapas Cadastradas</h2>
+				</tr>
 				<tr>
 					<td>Texto</td>
 					<td>ProxEtapaId</td>
@@ -157,7 +192,7 @@
 			</thead>
 			<tbody id='tabelao'>
 			</tbody>
-		</table>			
+		</table>
 
 	</div>
 
