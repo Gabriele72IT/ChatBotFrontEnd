@@ -53,6 +53,7 @@ function carregaEtapas(metodo, id, corpo) {
 	if (id === undefined || id === 0) { id = ''; }
 
 	xhr.open(metodo, `https://localhost:44314/api/Etapas/${id}`, true);
+	xhr.setRequestHeader('Authorization', 'Bearer ' +  sessionStorage.getItem('token'));
 
 	xhr.onload = function () {
 		var etapas = JSON.parse(this.responseText);
